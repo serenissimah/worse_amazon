@@ -3,18 +3,18 @@ import { Form, Rating, Dropdown } from "semantic-ui-react";
 import axios from "axios";
 
 class ReviewForm extends React.Component {
-  state = { title: '', body: '', author: '', rating: 0, image: '' }
+  state = { title: '', body: '', author: '', rating: 0, image_url: '' }
 
   componentDidMount() {
-      if (this.props.edit) {
-      axios.get(`/api/items/${this.props.location.state.item_id}/reviews/${this.props.match.params.id}`)
-        .then(res => {
-          // the long way
-          // const { title, body, author, rating, image } = res.data
-          // this.setState({ title, body, author, rating, image })
-          this.setState({ ...res.data })
-        })
-      }
+    if (this.props.edit) {
+    axios.get(`/api/items/${this.props.location.state.item_id}/reviews/${this.props.match.params.id}`)
+      .then(res => {
+        // the long way
+        // const { title, body, author, rating, image } = res.data
+        // this.setState({ title, body, author, rating, image })
+        this.setState({ ...res.data })
+      })
+    }
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -26,13 +26,13 @@ class ReviewForm extends React.Component {
   }
 
   handleImage = (e) => {
-    const image = e.target.currentSrc
-    this.setState({ image })
+    const image_url = e.target.currentSrc
+    this.setState({ image_url })
   }
 
 
   dropdownImageSelect = () => {
-    const { image } = this.state
+    const { image_url } = this.state
     const images = [
       {
         text: 'blue',
@@ -65,7 +65,7 @@ class ReviewForm extends React.Component {
         placeholder='Select an Avatar'
         compact
         options={images}
-        value={image}
+        value={image_url}
         onChange={this.handleImage}
       />
     )

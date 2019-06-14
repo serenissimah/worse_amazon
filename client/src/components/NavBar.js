@@ -37,7 +37,7 @@ const NavBar = () => (
         width: '50%',
         height: '100px',
       }}>
-        <Image src={require('../images/image.png')} alt="logo" width="200px" height="100px"/>
+        <Image src={require('../images/image.png')} alt="logo" width="200px" height="100px" />
       </div>
     </div>
   </Segment>

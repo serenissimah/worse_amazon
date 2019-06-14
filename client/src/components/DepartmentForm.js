@@ -8,6 +8,8 @@ class DepartmentForm extends React.Component {
 
   componentDidMount() {
     const { match: { params: { id } } } = this.props
+    // const id = this.props.match.params.id
+    
     if (id)
       axios.get(`/api/departments/${id}`)
         .then(res => {
